@@ -1,0 +1,7 @@
+{
+  "photosDir": "../fileserver/original/",
+  "resizedDir": "../fileserver/resized/",
+  "originalFilesUrl": "http://localhost:3003/original/",
+  "resizedFilesUrl": "http://localhost:3003/resized/",
+  "availableResolutions": ["100x100", "300x300", "640x480"]
+}
