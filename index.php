@@ -100,6 +100,14 @@ class App {
   }
   
   public function run() {
+    if (!file_exists($this->originalFileDir)) {
+        header("Content-Type: text/plain");
+	header("HTTP/1.0 404 Not Found");
+	echo "file not found \r\n";
+        echo "file: " . $this->fileName . "\r\n";
+        echo "resolution: " . $this->resolution . "\r\n";
+    }
+
     if (empty($this->resolution)) {
       $this->createOriginalSizedFileIfNotExist();
     }
