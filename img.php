@@ -20,17 +20,19 @@ class Img {
         $exif = exif_read_data($filename);
 
         $angle = 0;
-        
-        switch($exif['Orientation']) {
-            case 8:
-            $angle = 90;
-            break;
-        case 3:
-            $angle = 180;
-            break;
-        case 6:
-            $angle = -90;
-            break;
+
+        if (!empty($exif['Orientation'])) {
+            switch($exif['Orientation']) {
+                case 8:
+                    $angle = 90;
+                break;
+                case 3:
+                    $angle = 180;
+                break;
+                case 6:
+                    $angle = -90;
+                break;
+           }
         }
 
         return $angle;

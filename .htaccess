@@ -1,4 +1,6 @@
 RewriteEngine on
+# RewriteBase /blog/photos/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-R
-RewriteRule . index.php [L]
+#RewriteRule . index.php [L]
+RewriteRule ^.*$ index.php?uri=$0

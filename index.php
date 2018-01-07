@@ -1,5 +1,4 @@
 <?php
-
 include 'img.php';
 include 'config.php';
 
@@ -26,15 +25,16 @@ class App {
 
 
   private function pathParts() {
-    return explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+    $relativePath = ltrim($_SERVER['REQUEST_URI'], $this->config->getBasePath());
+    return explode('/', trim($relativePath, '/'));
   }
 
   private function getResizedFileDir() {
-    return $this->config->getPhotosDir() . '/' . $this->resizedFileName;
+    return $this->config->getResizedDir() . $this->resizedFileName;
   }
 
   private function getOriginalFileDir() {
-    return $this->config->getPhotosDir() . '/' . $this->fileName;
+    return $this->config->getPhotosDir() . $this->fileName;
   }
   
   private function getFileName() {
@@ -115,7 +115,6 @@ class App {
       $this->createResizedFileIfNotExist();
     }
 
-    header("Content-Type: image/jpeg");
     header("Location: " . $this->resizedFileUrl, 301);
   }
 }

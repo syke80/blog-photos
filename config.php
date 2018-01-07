@@ -1,5 +1,6 @@
 <?php
 class Config {
+  private $basePath;
   private $photosDir;
   private $resizedDir;
   private $originalFilesUrl;
@@ -8,6 +9,7 @@ class Config {
 
   function __construct() {
     $settings = json_decode(file_get_contents('./settings.json'));
+    $this->basePath = $settings->{'basePath'};
     $this->photosDir = $settings->{'photosDir'};
     $this->resizedDir = $settings->{'resizedDir'};
     $this->originalFilesUrl = $settings->{'originalFilesUrl'};
@@ -15,6 +17,10 @@ class Config {
     $this->availableResolutions = $settings->{'availableResolutions'};
   }
   
+  public function getBasePath() {
+    return $this->basePath;
+  }
+
   public function getPhotosDir() {
     return $this->photosDir;
   }
