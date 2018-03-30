@@ -102,8 +102,8 @@ class App {
   public function run() {
     if (!file_exists($this->originalFileDir)) {
         header("Content-Type: text/plain");
-	header("HTTP/1.0 404 Not Found");
-	echo "file not found \r\n";
+        header("HTTP/1.0 404 Not Found");
+        echo "file not found \r\n";
         echo "file: " . $this->fileName . "\r\n";
         echo "resolution: " . $this->resolution . "\r\n";
     }
@@ -115,6 +115,7 @@ class App {
       $this->createResizedFileIfNotExist();
     }
 
+    header("Content-Type: " . mime_content_type($this->originalFileDir));
     header("Location: " . $this->resizedFileUrl, 301);
   }
 }
